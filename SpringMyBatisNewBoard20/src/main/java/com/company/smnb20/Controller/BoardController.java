@@ -31,15 +31,10 @@ public class BoardController {
 	
 	@RequestMapping(value="/spring/ListController")
 	public String List(@ModelAttribute("scri") SearchCriteria scri,Model model) throws Exception{
-		
-//		System.out.println("ÄÁÆ®·Ñ·¯ÀÇ keywordÀÔ´Ï´Ù:"+scri.getKeyword());
-//		System.out.println("ÄÁÆ®·Ñ·¯ÀÇ searchTypeÀÔ´Ï´Ù:"+scri.getSearchType());
-//		System.out.println("ÄÁÆ®·Ñ·¯ÀÇ page:"+scri.getPage());
-//		System.out.println("ÄÁÆ®·Ñ·¯ÀÇ perPageNum:"+scri.getPerPageNum());
-			
+
 		int cnt=0;
 		cnt=bd.totalRecordCount(scri);
-	//	System.out.println("ÄÁÆ®·Ñ·¯ÀÇ cnt:"+cnt);
+	//	System.out.println("ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ cnt:"+cnt);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setScri(scri);		
@@ -130,7 +125,7 @@ public class BoardController {
 		String date = sdf.format(dt);		
 		date = date.substring(2);
 		
-		bv.setIdx(1);  //È¸¿ø¹øÈ£ 1 ÀÓ½Ã
+		bv.setIdx(1);  //È¸ï¿½ï¿½ï¿½ï¿½È£ 1 ï¿½Ó½ï¿½
 		bv.setWriteday(date);
 	
 		maxBidx = bd.getMaxBidx();		
@@ -202,7 +197,7 @@ public class BoardController {
 		String date = sdf.format(dt);		
 		date = date.substring(2);
 		
-		bv.setIdx(2); //È¸¿ø¹øÈ£2 ÀÓ½Ã
+		bv.setIdx(2); //È¸ï¿½ï¿½ï¿½ï¿½È£2 ï¿½Ó½ï¿½
 		bv.setWriteday(date);
 		
 		maxBidx = bd.getMaxBidx();
