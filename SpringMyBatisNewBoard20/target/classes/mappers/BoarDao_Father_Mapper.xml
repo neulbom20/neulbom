@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.company.smnb20.Dao.BoarDao_Father_Mapper">
+ <!-- 
+    <resultMap type="BoardVo" id="BoardVoResultMap">
+        <result property="subject" column="SUBJECT" />
+        <result property="writer" column="WRITER" />
+        <result property="writeday" column="WRITEDAY" />
+        <result property="content" column="CONTENT" />
+        <result property="moidfyday" column="MOIDFYDAY" />
+        <result property="leftright" column="LEFTRIGHT" />
+        <result property="bidx" column="BIDX" />
+        <result property="idx" column="IDX" />
+        <result property="originidx" column="ORIGINIDX" />
+        <result property="updown" column="UPDOWN" />
+    </resultMap>
+    -->
+    <sql id="search">    
+	    <if test="searchType != null and searchType.equals('writer')">	
+			 where  writer like '%'||#{keyword}||'%'
+		</if>	
+		<if test="searchType != null and searchType.equals('subject')">	
+			 where  subject like '%'||#{keyword}||'%'
+		</if> 
+    </sql>    
+    
+	<select id="getSelect" parameterType="Integer" resultType="bvo">
+	select bidx, originidx,updown,leftright,subject,content,writer,writeday,modifyday,idx from NEWBOARD20 where bidx=#{bidx}
+	</select>
+	
+	<insert id="getInsert" parameterType="HashMap">
+	insert into NEWBOARD20 values(#{bidx},#{bidx},0,0,#{subject},#{content},#{writer},#{writeday},null,#{idx})
+	</insert>
+	
+	<select id="getMaxBidx" resultType="Integer">
+	select max(bidx) from NEWBOARD20
+	</select>
+	
+	<update id="getUpdate" parameterType="HashMap">
+	update NEWBOARD20 set subject=#{subject},content=#{content},writer=#{writer},modifyday=#{modifyday} where bidx=#{bidx}
+
+	</update>
+	
+	<delete id="getDelete">
+	delete from NEWBOARD20 where bidx=#{bidx}
+	</delete>
+	
+
+	<select id="getBoardList_T" parameterType="scri" resultType="bvo">
+			<![CDATA[
+			select X.rnum, X.bidx,X.originidx,X.updown,X.leftright,X.subject,X.content,X.writer,X.writeday,X.idx from 
+			(
+				select rownum as rnum, A.bidx,A.originidx,A.updown,A.leftright,A.subject,A.content,A.writer,A.writeday,A.idx from 
+				(
+					select bidx,originidx,updown,leftright,subject,content,writer,writeday,idx from 
+					NEWBOARD20 
+			]]>
+				
+			<include refid="search"></include>
+				
+			<![CDATA[	 
+					 order by originidx asc, updown asc 
+				) A
+				where rownum <= #{pageEnd}
+			) X
+			where X.rnum >=#{pageStart}
+			order by X.rnum
+			]]>
+	</select>
+	
+	<select id="totalRecordCount" parameterType="scri" resultType="Integer">
+		<![CDATA[
+		select count(*) from NEWBOARD20
+		]]>
+			
+		<include refid="search"></include>	
+	</select>
+	
+	<update id="getReplyUpdate" parameterType="HashMap">
+	<![CDATA[update NEWBOARD20 set updown=updown+1 where originidx=#{originidx} and updown > #{updown}]]>
+	</update>
+	
+	<insert id="getReplyInsert" parameterType="HashMap">
+		insert into NEWBOARD20 values(#{bidx},#{originidx},#{updown}+1,#{leftright}+1,#{subject},#{content},#{writer},#{writeday},null,#{idx})
+	</insert>
+</mapper>
+	
+	

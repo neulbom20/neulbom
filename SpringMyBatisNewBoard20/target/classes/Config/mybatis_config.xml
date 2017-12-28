@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+     
+  <configuration>      
+ <typeAliases > 
+	<typeAlias alias="bvo" type="com.company.smnb20.domain.BoardVo"/>
+	<typeAlias alias="mvo" type="com.company.smnb20.domain.MemberVo"/>
+	<typeAlias alias="scri" type="com.company.smnb20.domain.SearchCriteria"/>
+	<typeAlias alias="cri" type="com.company.smnb20.domain.Criteria"/>
+ </typeAliases>
+ </configuration>
