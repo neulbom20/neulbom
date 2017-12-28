@@ -29,6 +29,7 @@ public class MemberController {
 		HttpSession httpSession = request.getSession();
 		httpSession.setAttribute("id", mv.getId());
 		httpSession.setAttribute("idx", mv.getId());
+		
 		return "redirect:/spring/ListController";
 		
 	}
