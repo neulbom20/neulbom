@@ -24,7 +24,7 @@ public class MemberController {
 		MemberVo mv= md.MemberLoginCheck(mvo.getId(),mvo.getPassword());
 	//	model.addAttribute("mv", mv);
 				
-		//session
+		
 		HttpSession httpSession = request.getSession();
 		httpSession.setAttribute("id", mv.getId());
 		httpSession.setAttribute("idx", mv.getId());
