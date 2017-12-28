@@ -1,6 +1,6 @@
 package com.company.smnb20.Controller;
 
-import java.io.UnsupportedEncodingException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,7 +34,7 @@ public class BoardController {
 
 		int cnt=0;
 		cnt=bd.totalRecordCount(scri);
-	//	System.out.println("��Ʈ�ѷ��� cnt:"+cnt);
+	
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setScri(scri);		
