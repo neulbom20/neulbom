@@ -16,8 +16,6 @@ INSERT INTO MEMBER_NB VALUES(idx_seq.nextval,#{member_id},#{member_password},'N'
 SELECT * FROM MEMBER_NB where MEMBER_idx=#{member_idx}
 </select>
 
-
-
 <update id="modifyMember">
 UPDATE MEMBER_NB SET Member_password=#{member_password},
 Member_addr=#{member_addr},Member_phone=#{member_phone},

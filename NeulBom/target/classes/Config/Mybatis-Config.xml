@@ -3,6 +3,7 @@
 
 <configuration>
  <typeAliases > 
+	<typeAlias alias="mvo" type="com.company.neulbom.Domain.MemberVO"/>
 	<typeAlias alias="bvo" type="com.company.neulbom.Domain.BoardVO"/>
 	<typeAlias alias="nvo" type="com.company.neulbom.Domain.NoticeVO"/>
 	<typeAlias alias="pavo" type="com.company.neulbom.Domain.PhotoAlbumVO"/>

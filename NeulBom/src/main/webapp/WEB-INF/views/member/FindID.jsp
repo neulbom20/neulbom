@@ -14,15 +14,12 @@ function check(){
 	    form0922.member_name.focus();
 	    return false;
 
-	    
-	    
 }  else if (form0922.member_phone.value =="") {
 	alert("전화번호를 적어주세요");
 	form0922.member_phone.focus();
 	return false;
 	
 
-	
 }
 	form0922.submit();
 	return;

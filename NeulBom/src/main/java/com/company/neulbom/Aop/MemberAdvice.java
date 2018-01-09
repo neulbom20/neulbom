@@ -17,6 +17,7 @@ public class MemberAdvice {
 private static final  Logger logger =LoggerFactory.getLogger(MemberAdvice.class);
 //@Before("execution(* com.company.smnb20.Service.BoardDao_S*.*(..))")
 //
+
 //public void startLog(JoinPoint jp){
 //logger.info("Aop---------------------------------------------------------------------------------------------------------");
 //
@@ -25,11 +26,7 @@ private static final  Logger logger =LoggerFactory.getLogger(MemberAdvice.class)
 //
 //
 
-
-
-
-
-@Around("execution(* com.company.neulbom.Service.*.*(..))")
+@Around("execution(* com.company.neulbom.Service.Memb*.*(..))")
 
 public Object timeLog(ProceedingJoinPoint pjp)throws Throwable{
 	

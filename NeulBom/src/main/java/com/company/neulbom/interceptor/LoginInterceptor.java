@@ -23,8 +23,6 @@ public void postHandle(HttpServletRequest request,HttpServletResponse response,
 		
 
 	
-		 
-		 
 		if(Member_id !=null){
 			session.setAttribute("Member_id",Member_id);
 			session.setAttribute("Member_idx",Member_idx);
