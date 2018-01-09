@@ -16,5 +16,10 @@
 
 <a href="${pageContext.request.contextPath}/Spring/MainController">메인가기</a>
 
+<a href="${pageContext.request.contextPath}/Spring/MemberLoginController">로그인</a>
+<a href="${pageContext.request.contextPath}/Spring/MemberJoinAgreeController">회원가입 동의</a>
+
+
+
 </body>
 </html>

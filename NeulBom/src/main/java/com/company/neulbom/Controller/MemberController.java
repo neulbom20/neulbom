@@ -23,7 +23,7 @@ public class MemberController {
 	@RequestMapping(value="/Spring/MemberJoinAgreeController")
 	public String MemberJoinAgree()throws Exception{
 
-		return "MemberJoinAgree";
+		return "/member/MemberJoinAgree";
 
 	}
 
@@ -169,6 +169,13 @@ public String MemberJoinCheck() throws Exception{
 
 	
 ////	
+	@RequestMapping(value="/Spring/MemberLoginController")
+public String MemberLogin() throws Exception{
+	
+		
+	return "/member/Login";
+		
+}
 //////로그인
 @RequestMapping(value="/Spring/MemberLoginCheckController")
 	public String MemberLoginCheck(@ModelAttribute("mv") MemberVO mvo, HttpServletRequest request) throws Exception{
