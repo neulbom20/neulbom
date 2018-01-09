@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.neulbom.Persistence.MemberMapper">
+
+<insert id="insertMember" parameterType="HashMap">	
+INSERT INTO MEMBER_NB VALUES(idx_seq.nextval,#{member_id},#{member_password},'N',#{member_name},#{member_birth},#{member_addr},#{member_phone},#{member_date},sysdate,null,'n')
+</insert>
+
+<select id="MemberLoginCheck" parameterType="HashMap" resultType="mvo">
+		select member_idx,member_id from MEMBER_NB 
+			where member_id=#{member_id} 
+			and member_password=#{member_password} 
+			and Member_withdraw='n'
+</select>
+<select id="getMember" parameterType="Integer" resultType="mvo">
+SELECT * FROM MEMBER_NB where MEMBER_idx=#{member_idx}
+</select>
+
+
+
+<update id="modifyMember">
+UPDATE MEMBER_NB SET Member_password=#{member_password},
+Member_addr=#{member_addr},Member_phone=#{member_phone},
+Member_modifydate=#{member_modifydate} WHERE MEMBER_idx=#{member_idx}
+</update>
+
+<update id="deleteMember">
+UPDATE MEMBER_NB SET Member_withdraw='Y'
+WHERE MEMBER_IDX=#{member_idx}
+and MEMBER_PASSWORD =#{member_password}
+</update>
+
+
+
+<select id="MemberId" parameterType="HashMap" resultType="mvo">
+SELECT * FROM MEMBER_NB where Member_withdraw='n'
+AND MEMBER_name =#{member_name}
+AND MEMBER_phone =#{member_phone}
+</select>
+
+<select id="MemberPassword" parameterType="HashMap" resultType="mvo">
+SELECT * FROM MEMBER_NB where Member_withdraw='n'
+AND MEMBER_ID =#{member_id}
+AND MEMBER_name =#{member_name}
+AND MEMBER_phone =#{member_phone}
+</select>
+
+<select id="MemberCheck" parameterType="HashMap" resultType="Integer">
+select COUNT(*)from member_nb where member_id=#{member_id}
+</select>
+
+
+
+
+
+</mapper>

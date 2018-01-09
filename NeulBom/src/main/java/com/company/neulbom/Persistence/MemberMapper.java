@@ -6,10 +6,16 @@ import com.company.neulbom.Domain.MemberVO;
 
 public interface MemberMapper {
 
-	public MemberVO getMember(int idx);
-	public int insertMember(HashMap<String, Object> map);
-	public int modifyMember(HashMap<String, Object> map);
-	public int deleteMember(int idx);
-	public MemberVO checkLogin();
+	public MemberVO getMember(int membe_idx);
+	public int  insertMember(HashMap<String, Object> map);
+	public int  modifyMember(HashMap<String, Object> map);
+	public int  deleteMember(HashMap<String, Object> map);
+	public MemberVO MemberId(HashMap<String, Object> map);
+	public MemberVO MemberLoginCheck(HashMap<String, Object> map);
+	public MemberVO MemberPassword(HashMap<String, Object> map);	
+	public int MemberCheck(HashMap<String, Object> map);
+	
+	
+	
 	
 }
