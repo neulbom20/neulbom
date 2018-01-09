@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.neulbom.Persistence.BoardMapper">
+
+<select id="getBoardList" parameterType="scri" resultType="bvo">
+SELECT BOARD_IDX,BOARD_TITLE,BOARD_WRITER,BOARD_DATE,BOARD_HITS FROM BOARD_NB
+</select>
+ 
+<select id="getBoard" parameterType="Integer" resultType="bvo">
+SELECT BOARD_IDX,BOARD_TITLE,BOARD_CONTENT,BOARD_WRITER,BOARD_DATE,BOARD_HITS from BOARD_NB where board_idx=#{board_idx}
+</select>
+	
+<insert id="writeBoard" parameterType="HashMap">
+INSERT into BOARD_NB values(board_idx_seq.nextval,2,#{board_title},#{board_content},#{board_writer},#{board_date},sysdate,null,'N',#{member_idx})
+</insert>
+	
+<update id="modifyBoard" parameterType="HashMap">
+UPDATE BOARD_NB set board_title=#{board_title},board_content=#{board_content},board_writer=#{board_writer},board_date=#{board_date} where board_idx=#{board_idx}
+</update>
+	
+<delete id="deleteBoard">
+DELETE from BOARD_NB where board_idx=#{board_idx}
+</delete>
+
+<select id="totalRecordCount" parameterType="scri" resultType="Integer">
+SELECT COUNT(*) FROM BOARD_NB
+</select>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.neulbom.Persistence.NoticeMapper">
+
+<select id="getNoticeList" parameterType="scri" resultType="nvo">
+SELECT NOTICE_IDX,NOTICE_TITLE,NOTICE_WRITER,NOTICE_DATE,NOTICE_HITS FROM NOTICE_NB
+</select>
+
+<select id="getNotice" parameterType="Integer" resultType="nvo">
+SELECT NOTICE_IDX,NOTICE_TITLE,NOTICE_CONTENT,NOTICE_WRITER,NOTICE_DATE,NOTICE_HITS FROM NOTICE_NB where notice_idx=#{notice_idx}
+</select>
+
+<select id="writeNotice"  parameterType="HashMap">
+INSERT into NOTICE_NB values(notice_idx_seq.nextval,1,#{notice_title},#{notice_content},#{notice_writer},#{notice_date},sysdate,null,#{member_idx})
+</select>
+
+<update id="modifyNotice" parameterType="HashMap">
+UPDATE NOTICE_NB set notice_title=#{notice_title},notice_content=#{notice_content},notice_writer=#{notice_writer},notice_date=#{notice_date} where member_idx=#{member_idx}
+</update>
+	
+<delete id="deleteNotice">
+DELETE from NOTICE_NB where notice_idx=#{notice_idx}
+</delete>
+
+<select id="totalRecordCount" parameterType="scri" resultType="Integer">
+SELECT COUNT(*) FROM NOTICE_NB
+</select>
+
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+ <typeAliases > 
+	<typeAlias alias="bvo" type="com.company.neulbom.Domain.BoardVO"/>
+	<typeAlias alias="nvo" type="com.company.neulbom.Domain.NoticeVO"/>
+	<typeAlias alias="pavo" type="com.company.neulbom.Domain.PhotoAlbumVO"/>
+	<typeAlias alias="scri" type="com.company.neulbom.Domain.SearchCriteria"/>
+ </typeAliases>
+</configuration>

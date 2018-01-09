@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.neulbom.Persistence.PhotoAlbumMapper">
+
+<select id="getPhotoAlbumList" parameterType="scri" resultType="pavo">
+SELECT PHOTOALBUM_IDX,PHOTOALBUM_TITLE,PHOTOALBUM_WRITER,PHOTOALBUM_DATE,PHOTOALBUM_HITS FROM PHOTOALBUM_NB
+</select>
+ 
+<select id="getPhotoAlbum" parameterType="Integer" resultType="pavo">
+SELECT PHOTOALBUM_IDX,PHOTOALBUM_TITLE,PHOTOALBUM_CONTENT,PHOTOALBUM_WRITER,PHOTOALBUM_DATE,PHOTOALBUM_HITS from PHOTOALBUM_NB where photoalbum_idx=#{photoalbum_idx}
+</select>
+	
+<insert id="writePhotoAlbum" parameterType="HashMap">
+INSERT into PHOTOALBUM_NB values(photoalbum_idx_seq.nextval,3,#{photoalbum_title},#{photoalbum_content},#{photoalbum_writer},#{photoalbum_date},sysdate,null,'N',#{member_idx})
+</insert>
+	
+<update id="modifyPhotoAlbum" parameterType="HashMap">
+UPDATE PHOTOALBUM_NB set photoalbum_title=#{photoalbum_title},photoalbum_content=#{photoalbum_content},photoalbum_writer=#{photoalbum_writer},photoalbum_date=#{photoalbum_date} where photoalbum_idx=#{photoalbum_idx}
+</update>
+	
+<delete id="deletePhotoAlbum">
+DELETE from PHOTOALBUM_NB where photoalbum_idx=#{photoalbum_idx}
+</delete>
+
+<select id="totalRecordCount" parameterType="scri" resultType="Integer">
+SELECT COUNT(*) FROM PHOTOALBUM_NB
+</select>
+
+</mapper>
